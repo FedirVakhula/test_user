@@ -113,17 +113,17 @@ export class UserFormComponent implements OnInit {
 
   private initUserForm(): void {
     this.form = this.fb.group({
-      userName: new FormControl<string | null>('', [
+      userName: new FormControl<string>('', [
         Validators.required,
         UserValidatorsService.UserNameUnique(this),
       ]),
-      firstName: new FormControl<string | null>(null, Validators.required),
-      lastName: new FormControl<string | null>(null, Validators.required),
-      email: new FormControl<string | null>(null, [
+      firstName: new FormControl<string>('', Validators.required),
+      lastName: new FormControl<string>('', Validators.required),
+      email: new FormControl<string>('', [
         Validators.required,
         Validators.email,
       ]),
-      type: new FormControl<string | null>(null, Validators.required),
+      type: new FormControl<string>('', Validators.required),
       userPassword: this.fb.group<{
         password: FormControl<string | null>;
         repeatPassword: FormControl<string | null>;
