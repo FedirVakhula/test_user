@@ -1,0 +1,28 @@
+.custom-btn {
+  box-shadow: 0px 5px 8px #2e8ff029;
+  border-radius: 6px;
+  width: 120px;
+  height: 46px;
+
+  button {
+    height: 100%;
+    width: 100%;
+    border: none;
+  }
+
+  .button-text {
+    color: #ffffff;
+  }
+
+  .mat-primary {
+    background-color: #2e8ff0;
+
+    &.mat-mdc-button-disabled {
+      background-color: var(--mdc-filled-button-disabled-label-text-color);
+    }
+  }
+
+  .mat-secondary {
+    background-color: #f44682;
+  }
+}

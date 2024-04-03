@@ -1,0 +1,9 @@
+.table-container {
+  max-height: 90vh;
+  min-height: 200px;
+  overflow: auto;
+
+  .selected {
+    background-color: #eff0f4;
+  }
+}

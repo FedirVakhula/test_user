@@ -1,0 +1,54 @@
+<mat-table [dataSource]="dataSource" class="table-container">
+  <ng-container matColumnDef="userName">
+    <mat-header-cell *matHeaderCellDef fxFlex="50%">USER NAME</mat-header-cell>
+    <mat-cell *matCellDef="let user" fxFlex="50%">
+      <div>{{ user.userName }}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef fxFlex="20%">FIRST NAME</mat-header-cell>
+    <mat-cell *matCellDef="let user" fxFlex="20%">
+      <div>{{ user.firstName }}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef fxFlex="30%">LAST NAME</mat-header-cell>
+    <mat-cell *matCellDef="let user" fxFlex="30%">
+      <div>{{ user.lastName }}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <mat-header-cell *matHeaderCellDef fxFlex="30%">EMAIL</mat-header-cell>
+    <mat-cell *matCellDef="let user" fxFlex="30%">
+      <div>{{ user.email }}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <mat-header-cell *matHeaderCellDef fxFlex="30%">EMAIL</mat-header-cell>
+    <mat-cell *matCellDef="let user" fxFlex="30%">
+      <div>{{ user.type }}</div>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="noData">
+    <mat-footer-cell *matFooterCellDef colspan="6" class="no-data-row">
+      <span *ngIf="!dataSource.data || dataSource.data.length === 0"
+        >NO Data</span
+      >
+    </mat-footer-cell>
+  </ng-container>
+
+  <mat-header-row
+    *matHeaderRowDef="displayedColumns; sticky: true"
+  ></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    [class.selected]="selectedUser === row"
+    (click)="userSelect(row)"
+  ></mat-row>
+  <mat-footer-row *matFooterRowDef="['noData']"></mat-footer-row>
+</mat-table>

@@ -1,0 +1,244 @@
+<div class="user">
+  <div class="user__header">
+    <div class="user__title">{{ title }}</div>
+    <mat-icon (click)="closeForm.emit()">close</mat-icon>
+  </div>
+  <form class="user__form-container" [formGroup]="form">
+    <div>
+      <div class="user__control-label">Username*</div>
+      <div
+        class="user__control-input-container"
+        [class.error]="
+          (form.controls['userName'].hasError('message') ||
+            form.controls['userName'].hasError('required')) &&
+          form.controls['userName'].touched
+        "
+      >
+        <input formControlName="userName" type="text" />
+      </div>
+      <mat-error
+        class="user__control-error"
+        *ngIf="
+          form.controls['userName'].hasError('message') &&
+          form.controls['userName'].touched
+        "
+        >{{ form.get("userName")?.getError("message") }}</mat-error
+      >
+      <mat-error
+        class="user__control-error"
+        *ngIf="
+          form.controls['userName'].hasError('required') &&
+          form.controls['userName'].touched
+        "
+      >
+        userName is required
+      </mat-error>
+    </div>
+    <div>
+      <div class="user__control-label">First name*</div>
+      <div
+        class="user__control-input-container"
+        [class.error]="
+          form.controls['firstName'].hasError('required') &&
+          form.controls['firstName'].touched
+        "
+      >
+        <input formControlName="firstName" type="text" appOnlyString />
+      </div>
+      <mat-error
+        class="user__control-error"
+        *ngIf="
+          form.controls['firstName'].hasError('required') &&
+          form.controls['firstName'].touched
+        "
+      >
+        first name is required
+      </mat-error>
+    </div>
+    <div>
+      <div class="user__control-label">Last name*</div>
+      <div
+        class="user__control-input-container"
+        [class.error]="
+          form.controls['lastName'].hasError('required') &&
+          form.controls['lastName'].touched
+        "
+      >
+        <input formControlName="lastName" type="text" />
+      </div>
+      <mat-error
+        class="user__control-error"
+        *ngIf="
+          form.controls['lastName'].hasError('required') &&
+          form.controls['lastName'].touched
+        "
+      >
+        last name is required
+      </mat-error>
+    </div>
+    <div>
+      <div class="user__control-label">Email*</div>
+      <div
+        class="user__control-input-container user-email"
+        [class.error]="
+          (form.controls['email'].hasError('email') ||
+            form.controls['email'].hasError('required')) &&
+          form.controls['email'].touched
+        "
+      >
+        <mat-icon>alternate_email</mat-icon>
+        <input col formControlName="email" type="text" />
+      </div>
+      <mat-error
+        class="user__control-error"
+        *ngIf="
+          form.controls['email'].hasError('required') &&
+          form.controls['email'].touched
+        "
+      >
+        email is required
+      </mat-error>
+      <mat-error
+        class="user__control-error"
+        *ngIf="
+          form.controls['email'].hasError('email') &&
+          form.controls['email'].touched
+        "
+      >
+        no correct email
+      </mat-error>
+    </div>
+    <div>
+      <div class="user__control-label">Type*</div>
+      <div
+        class="user__control-input-container user-type"
+        [class.error]="
+          form.controls['type'].hasError('required') &&
+          form.controls['type'].touched
+        "
+      >
+        <mat-select formControlName="type">
+          @for (type of userTypeList; track type) {
+          <mat-option [value]="type">{{ type }}</mat-option>
+          }
+        </mat-select>
+      </div>
+      <mat-error
+        class="user__control-error"
+        *ngIf="
+          form.controls['type'].hasError('required') &&
+          form.controls['type'].touched
+        "
+      >
+        type is required
+      </mat-error>
+    </div>
+    <div formGroupName="userPassword" class="user__password">
+      <div>
+        <div class="user__control-label">Password*</div>
+        <div
+          class="user__control-input-container"
+          [class.error]="
+            (form.controls['userPassword']
+              .get('password')
+              ?.hasError('pattern') ||
+              form.controls['userPassword']
+                .get('password')
+                ?.hasError('required')) &&
+            form.controls['userPassword'].get('password')?.touched
+          "
+        >
+          <input formControlName="password" type="password" />
+        </div>
+        <mat-error
+          class="user__control-error"
+          *ngIf="
+            form.controls['userPassword']
+              .get('password')
+              ?.hasError('required') &&
+            form.controls['userPassword'].get('password')?.touched
+          "
+        >
+          password is required
+        </mat-error>
+        <mat-error
+          class="user__control-error"
+          *ngIf="
+            form.controls['userPassword']
+              .get('password')
+              ?.hasError('pattern') &&
+            form.controls['userPassword'].get('password')?.touched
+          "
+        >
+          password should contain at least 1 number and 1 upper and lower case
+          letter and should contain at least 8 characters
+        </mat-error>
+      </div>
+      <div>
+        <div class="user__control-label">Repeat password*</div>
+        <div
+          class="user__control-input-container"
+          [class.error]="
+            form.controls['userPassword']
+              .get('repeatPassword')
+              ?.hasError('confirmedValidator') ||
+            (form.controls['userPassword']
+              .get('repeatPassword')
+              ?.hasError('required') &&
+              form.controls['userPassword'].get('repeatPassword')?.touched)
+          "
+        >
+          <input formControlName="repeatPassword" type="password" />
+        </div>
+      </div>
+      <mat-error
+        class="user__control-error"
+        *ngIf="
+          form.controls['userPassword']
+            .get('repeatPassword')
+            ?.hasError('confirmedValidator') &&
+          form.controls['userPassword'].get('repeatPassword')?.touched
+        "
+      >
+        Passwords did not match
+      </mat-error>
+      <mat-error
+        class="user__control-error"
+        *ngIf="
+          form.controls['userPassword']
+            .get('repeatPassword')
+            ?.hasError('required') &&
+          form.controls['userPassword'].get('repeatPassword')?.touched
+        "
+      >
+        repeat password is required
+      </mat-error>
+    </div>
+  </form>
+
+  <div class="user__footer" [class.create]="!userData">
+    @if (!!userData) {
+    <app-button
+      class="user__delete"
+      state="secondary"
+      buttonText="Delete"
+      (onClick)="deleteUser()"
+    ></app-button>
+    <app-button
+      class="user__save"
+      state="primary"
+      buttonText="Save"
+      [disabled]="form.invalid || form.untouched"
+      (onClick)="saveUser()"
+    ></app-button>
+    } @else {
+    <app-button
+      class="user__save"
+      state="primary"
+      buttonText="Create"
+      [disabled]="form.invalid || form.untouched"
+      (onClick)="onCreateUser()"
+    ></app-button>
+    }
+  </div>
+</div>

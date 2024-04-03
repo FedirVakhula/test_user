@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "userName": "mperry1992",
+      "firstName": "Matthew",
+      "lastName": "Perry",
+      "email": "mperry1992@mail.com",
+      "type": "admin",
+      "password": "qwerty1L",
+      "id": "1"
+    },
+    {
+      "userName": "FedirCoolGuy",
+      "firstName": "Fedir",
+      "lastName": "1Test",
+      "email": "ffftest@gmail.com",
+      "type": "driver",
+      "password": "qwert123L",
+      "id": "a1a31b06-513d-4f1b-8208-e4820d17acaa"
+    },
+    {
+      "id": "21962f5f-85ad-45c9-baa5-fac72bbfc676",
+      "userName": "1",
+      "firstName": "1",
+      "lastName": "1",
+      "email": "1@ads",
+      "type": "admin",
+      "password": "qwert123L"
+    }
+  ]
+}

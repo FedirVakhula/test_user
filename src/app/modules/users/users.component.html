@@ -1,0 +1,28 @@
+<div class="users">
+  <div class="users__container">
+    <app-button
+      class="users__create"
+      state="primary"
+      buttonText="Create User"
+      (onClick)="onCreateUser()"
+    ></app-button>
+    <app-user-list
+      class="users__list"
+      [data]="users"
+      (userSelectChange)="onUserSelectChange($event)"
+    >
+    </app-user-list>
+  </div>
+  <div class="users__form">
+    <app-user-form
+      *ngIf="isFormOpened"
+      [user]="selectedUser"
+      [userList]="users"
+      (closeForm)="onCloseForm()"
+      (updateUser)="onUpdateUser($event)"
+      (createUser)="onCreateNewUser($event)"
+      (deleteSelectedUser)="onDeleteSelectedUser($event)"
+    >
+    </app-user-form>
+  </div>
+</div>

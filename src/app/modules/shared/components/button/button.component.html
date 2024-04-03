@@ -1,0 +1,18 @@
+<div class="custom-btn">
+  <button
+    mat-flat-button
+    [color]="color"
+    [disabled]="disabled"
+    (click)="disabled ? null : onClick.emit($event)"
+  >
+    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+  </button>
+</div>
+
+<ng-template #buttonContent>
+  <div class="button-content">
+    <span class="button-text" *ngIf="buttonText">
+      {{ buttonText }}
+    </span>
+  </div>
+</ng-template>
