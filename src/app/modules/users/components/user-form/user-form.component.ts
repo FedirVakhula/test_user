@@ -113,10 +113,13 @@ export class UserFormComponent implements OnInit {
 
   private initUserForm(): void {
     this.form = this.fb.group({
-      userName: new FormControl<string>('', [
-        Validators.required,
-        UserValidatorsService.UserNameUnique(this),
-      ]),
+      userName: new FormControl<string>('', {
+        nonNullable: true,
+        validators: [
+          Validators.required,
+          UserValidatorsService.UserNameUnique(this),
+        ],
+      }),
       firstName: new FormControl<string>('', Validators.required),
       lastName: new FormControl<string>('', Validators.required),
       email: new FormControl<string>('', [
