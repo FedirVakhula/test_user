@@ -117,7 +117,7 @@ export class UserFormComponent implements OnInit {
         nonNullable: true,
         validators: [
           Validators.required,
-          UserValidatorsService.UserNameUnique(this),
+          UserValidatorsService.UserNameUnique(this) as ValidatorFn,
         ],
       }),
       firstName: new FormControl<string>('', Validators.required),
